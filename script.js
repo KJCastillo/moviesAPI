@@ -11,9 +11,8 @@ function fetchData(){
         const html = data.Search.map(film => {
             return `
             <div class="films">
-                <p class="row"><img src="${film.Poster}" alt="movie poster" /></p>
-                <p class="row">Title = ${film.Title}</p>
-                <p class="row">Year = ${film.Year}</p>
+                <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
+                <li class="titleLine">${film.Title} - released in ${film.Year}</li>
             </div>
             `
         }).join("")
