@@ -28,35 +28,53 @@
 
 // fetchData()
 
-$(document).ready(() => {
-    $('#searchForm').on('submit', (e) => {
-      let searchText = document.querySelector('#searchText').value;
-      getMovies(searchText);
-      e.preventDefault();
-    });
-});
+// $(document).ready(() => {
+//     $('#searchForm').on('submit', (e) => {
+//       let searchText = document.querySelector('#searchText').value;
+//       getMovies(searchText);
+//       e.preventDefault();
+//     });
+// });
 
 
-// let test = document.querySelector('#searchText1').value;
-// console.log(test)
-// console.log('do i work?')
+// function getMovies(searchText){
+//     axios.get('http://www.omdbapi.com?s='+searchText+"&apikey=ce941a34")
+//       .then((response) => {
+//         let movies = response.data.Search;
+//         let output = '';
+//         $.each(movies, (index, film) => {
+//           output += `
+//             <div class="films">
+//                 <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
+//                 <li class="titleLine">${film.Title} - released in ${film.Year}</li>
+//             </div>
+//           `;
+//         });  
+//         $('#movies').html(output);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+// };
 
-function getMovies(searchText){
-    axios.get('http://www.omdbapi.com?s='+searchText+"&apikey=ce941a34")
-      .then((response) => {
-        let movies = response.data.Search;
-        let output = '';
-        $.each(movies, (index, film) => {
-          output += `
+function getMovies () {
+  let textInput = document.getElementById('searchText').value
+  console.log("text", textInput)
+  axios.get('http://www.omdbapi.com?s=' + textInput + "&apikey=ce941a34")
+    .then((response) => {
+      let movies = response.data.Search;
+      let output = '';
+      $.each(movies, (index, film) => {
+        output += `
             <div class="films">
                 <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
                 <li class="titleLine">${film.Title} - released in ${film.Year}</li>
             </div>
           `;
-        });  
-        $('#movies').html(output);
-      })
-      .catch((err) => {
-        console.log(err);
       });
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
