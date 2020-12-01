@@ -10,6 +10,7 @@ function getMovies () {
             <div class="films">
                 <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
                 <li class="titleLine">${film.Title} - released in ${film.Year}</li>
+                <button onclick="movie selected('${film.imdbID}')" class="btn btn-details btn-primary" type="button" href="#"><i class="fas fa-info-circle"></i></button>
             </div>
           `;
       });

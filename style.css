@@ -6,6 +6,10 @@ body {
   background-position: center center;
 }
 
+.navbar {
+  margin-bottom: 30px;
+}
+
 li {
   list-style-type: none;
   padding: 30px;
@@ -21,23 +25,39 @@ ul li {
 }
 
 .titleLine {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 5px;
   text-align: center;
   box-shadow: 0px 0px 5px #fff;
   background: white;
   opacity: 0.7;
-  margin-left: 45px;
+  width: 300px;
+  margin-top: 15px;
+  border-radius: 20px;
 }
 
-img {
+.poster, img {
   box-shadow: 0px 0px 15px #fff;
   width: 300px;
   height: 444px;
+  padding: 0;
+  border-radius: 20px;
 }
+
 
 .films {
   width: 360px;
   height: 578px;
   padding: 20px;
+}
+
+.btn-details {
+  display: inline-block
+}
+
+.btn-details:hover {
+  box-shadow: 0px 0px 15px #fff;
+}
+
+.movies {
+  display: inline-block;
 }
