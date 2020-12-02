@@ -30,9 +30,10 @@ ul li {
   box-shadow: 0px 0px 5px #fff;
   background: white;
   opacity: 0.7;
-  width: 300px;
+  width: 268px;
   margin-top: 15px;
   border-radius: 20px;
+  float: left;
 }
 
 .poster, img {
@@ -51,7 +52,10 @@ ul li {
 }
 
 .btn-details {
-  display: inline-block
+  float: right;
+  width: 40px;
+  margin-top: 18px;
+  border-radius: 10px;
 }
 
 .btn-details:hover {
@@ -61,3 +65,23 @@ ul li {
 .movies {
   display: inline-block;
 }
+
+.plotbkg {
+  opacity: 0.9;
+}
+
+.well2 {
+  margin-left: 30px;
+}
+
+.btn-primary {
+  margin-right: 5px;
+}
+
+/* .narrow {
+  float: right;
+  width: 45px;
+} */
+/* .wide {
+  float: left;
+} */

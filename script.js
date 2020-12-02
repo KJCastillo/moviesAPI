@@ -10,7 +10,7 @@ function getMovies () {
             <div class="films">
                 <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
                 <li class="titleLine">${film.Title} - released in ${film.Year}</li>
-                <button onclick="movieSelected('${film.imdbID}')" class="btn btn-details btn-primary" type="button" href="#"><i class="fas fa-info-circle"></i></button>
+                <button onclick="movieSelected('${film.imdbID}')" class="btn btn-details btn-primary" type="button" href="#"><i class="fas fa-info-circle fa-xs"></i></button>
             </div>
           `;
       });
@@ -46,25 +46,23 @@ function getFilm(){
           <div class="col-md-4">
             <img src="${film.Poster}" class="thumbnail">
           </div>
-          <div class="col-md-8">
-            <h2>${film.Title}</h2>
+          <div class="plotbkg col-md-8">
             <ul class="list-group">
+              <li class="list-group-item"><strong>Title:</strong> <h2>${film.Title}</h2></li>
+              <li class="list-group-item"><strong>Plot:</strong> ${film.Plot}</li>
               <li class="list-group-item"><strong>Genre:</strong> ${film.Genre}</li>
               <li class="list-group-item"><strong>Rated:</strong> ${film.Rated}</li>
               <li class="list-group-item"><strong>IMDB Rating:</strong> ${film.imdbRating}</li>
               <li class="list-group-item"><strong>Director:</strong> ${film.Director}</li>
-              <li class="list-group-item"><strong>Writer:</strong> ${film.Writer}</li>
               <li class="list-group-item"><strong>Actors:</strong> ${film.Actors}</li>
+              <li class="list-group-item"><strong>Writer:</strong> ${film.Writer}</li> 
             </ul>
           </div>
         </div>
         <div class="row">
-          <div class="well">
-            <h3>Plot</h3>
-            ${film.Plot}
-            <hr>
+          <div class="well2">
             <a href="http://imdb.com/title/${film.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-            <a href="index.html" class="btn btn-default">Go Back To Search</a>
+            <a href="index.html" class="btn btn-success">Go Back To Search</a>
           </div>
         </div>
       `;
