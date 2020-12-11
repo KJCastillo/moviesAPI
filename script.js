@@ -1,7 +1,9 @@
+
+
 function getMovies () {
   let textInput = document.getElementById('searchText').value
   console.log(textInput)
-  axios.get('http://www.omdbapi.com?s=' + textInput + "&apikey=ce941a34")
+  axios.get('https://www.omdbapi.com?s=' + textInput + "&apikey=ce941a34")
     .then((response) => {
       let movies = response.data.Search;
       let output = '';
@@ -20,6 +22,32 @@ function getMovies () {
       console.log(err);
     });
 };
+var eventTarget = document.getElementById('searchText')
+eventTarget.addEventListener("keydown", event => {
+  if (event.isComposing || event.keyCode === 13) {
+    event.preventDefault()
+    console.log(eventTarget.value)
+    axios.get('https://www.omdbapi.com?s=' + eventTarget.value + "&apikey=ce941a34")
+    .then((response) => {
+      let movies = response.data.Search;
+      let output = '';
+      $.each(movies, (index, film) => {
+        output += `
+            <div class="films">
+                <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
+                <li class="titleLine">${film.Title} - released in ${film.Year}</li>
+                <button onclick="movieSelected('${film.imdbID}')" class="btn btn-details btn-primary" type="button" href="#"><i class="fas fa-info-circle fa-xs"></i></button>
+            </div>
+          `;
+      });
+      $('#movies').html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+});
+
 
 // document.getElementById('searchText').addEventListener('keydown', event => {
 //   if (event.key === 'Enter' || event.key === 13) {
@@ -36,7 +64,7 @@ function movieSelected(id){
 function getFilm(){
   let movieId = sessionStorage.getItem('movieId');
 
-  axios.get('http://www.omdbapi.com?i='+ movieId + "&apikey=ce941a34")
+  axios.get('https://www.omdbapi.com?i='+ movieId + "&apikey=ce941a34")
     .then((response) => {
       console.log(response);
       let film = response.data;
