@@ -1,6 +1,8 @@
+
+
 function getMovies () {
   let textInput = document.getElementById('searchText').value
-  console.log(textInput)
+  console.log("textInput:",textInput)
   axios.get('https://www.omdbapi.com?s=' + textInput + "&apikey=ce941a34")
     .then((response) => {
       let movies = response.data.Search;
@@ -20,10 +22,9 @@ function getMovies () {
       console.log(err);
     });
 };
-
 var eventTarget = document.getElementById('searchText')
 eventTarget.addEventListener("keydown", event => {
-  if (event.isComposing || event.key === 13) {
+  if (event.isComposing || event.keyCode === 13) {
     event.preventDefault()
     console.log(eventTarget.value)
     axios.get('https://www.omdbapi.com?s=' + eventTarget.value + "&apikey=ce941a34")
@@ -39,13 +40,21 @@ eventTarget.addEventListener("keydown", event => {
             </div>
           `;
       });
-      $('#movies').html(output);
+      let listItem = document.querySelector('#movies')
+    listItem.innerHTML = output
     })
     .catch((err) => {
       console.log(err);
     });
   }
 });
+
+
+// document.getElementById('searchText').addEventListener('keydown', event => {
+//   if (event.key === 'Enter' || event.key === 13) {
+//     return getMovies()
+//   }
+// });
 
 function movieSelected(id){
   sessionStorage.setItem('movieId', id);
@@ -55,10 +64,12 @@ function movieSelected(id){
 
 function getFilm(){
   let movieId = sessionStorage.getItem('movieId');
+
   axios.get('https://www.omdbapi.com?i='+ movieId + "&apikey=ce941a34")
     .then((response) => {
       console.log(response);
       let film = response.data;
+
       let output =`
         <div class="row">
           <div class="col-md-4">
@@ -84,7 +95,9 @@ function getFilm(){
           </div>
         </div>
       `;
-      $('#movie').html(output);
+
+      let listItem = document.querySelector('#movies')
+    listItem.innerHTML = output
     })
     .catch((err) => {
       console.log(err);
