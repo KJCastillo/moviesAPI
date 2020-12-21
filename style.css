@@ -44,7 +44,6 @@ ul li {
   border-radius: 20px;
 }
 
-
 .films {
   width: 360px;
   height: 578px;
@@ -79,10 +78,8 @@ ul li {
   margin-right: 5px;
 }
 
-/* .narrow {
-  float: right;
-  width: 45px;
-} */
-/* .wide {
-  float: left;
+/* img.moviesLogo {
+    border-radius: 50% !important;
+    height: 75px;
+    width: 75px;
 } */
