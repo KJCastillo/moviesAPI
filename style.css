@@ -68,6 +68,7 @@ ul li {
 
 .plotbkg {
   opacity: 0.9;
+  max-width: 920px;
 }
 
 .well2 {
