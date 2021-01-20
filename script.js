@@ -49,13 +49,6 @@ eventTarget.addEventListener("keydown", event => {
   }
 });
 
-
-// document.getElementById('searchText').addEventListener('keydown', event => {
-//   if (event.key === 'Enter' || event.key === 13) {
-//     return getMovies()
-//   }
-// });
-
 function movieSelected(id){
   sessionStorage.setItem('movieId', id);
   window.location = 'movie.html';

@@ -3,6 +3,7 @@
         "apikey",
         "gitpod",
         "imdb",
+        "moviebkg",
         "plotbkg"
     ]
 }
