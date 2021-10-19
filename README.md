@@ -1,7 +1,9 @@
 # moviesAPI
 <!-- https://movies-api.kjcastillo.vercel.app/ -->
  A website that uses an API to populate movie information. Additional movie information will 
- redirect site to the IMDB database. Project created using HTML, CSS, JavaScript and jQuery.
+ redirect site to the IMDB database. Project created using HTML, CSS, JavaScript and jQuery. Deployed on Vercel.
+ 
+> [moviesAPI](https://movies-api-two-pi.vercel.app/) 
 
 > By [Kevin Castillo](https://www.linkedin.com/in/kevinjcastillo/)
 
