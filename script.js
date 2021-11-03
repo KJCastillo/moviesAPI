@@ -1,12 +1,11 @@
-
-
-function getMovies () {
-  let textInput = document.getElementById('searchText').value
-  console.log("textInput:",textInput)
-  axios.get('https://www.omdbapi.com?s=' + textInput + "&apikey=ce941a34")
+function getMovies() {
+  let textInput = document.getElementById("searchText").value;
+  console.log("textInput:", textInput);
+  axios
+    .get("https://www.omdbapi.com?s=" + textInput + "&apikey=ce941a34")
     .then((response) => {
       let movies = response.data.Search;
-      let output = '';
+      let output = "";
       $.each(movies, (index, film) => {
         output += `
             <div class="films">
@@ -16,54 +15,58 @@ function getMovies () {
             </div>
           `;
       });
-      $('#movies').html(output);
+      $("#movies").html(output);
     })
     .catch((err) => {
       console.log(err);
     });
-};
-var eventTarget = document.getElementById('searchText')
-eventTarget.addEventListener("keydown", event => {
+}
+var eventTarget = document.getElementById("searchText");
+eventTarget.addEventListener("keydown", (event) => {
   if (event.isComposing || event.keyCode === 13) {
-    event.preventDefault()
-    console.log(eventTarget.value)
-    axios.get('https://www.omdbapi.com?s=' + eventTarget.value + "&apikey=ce941a34")
-    .then((response) => {
-      let movies = response.data.Search;
-      let output = '';
-      $.each(movies, (index, film) => {
-        output += `
+    event.preventDefault();
+    console.log(eventTarget.value);
+    axios
+      .get(
+        "https://www.omdbapi.com?s=" + eventTarget.value + "&apikey=ce941a34"
+      )
+      .then((response) => {
+        let movies = response.data.Search;
+        let output = "";
+        $.each(movies, (index, film) => {
+          output += `
             <div class="films">
                 <li class="poster"><img src="${film.Poster}" alt="movie poster" /></li>
                 <li class="titleLine">${film.Title} - released in ${film.Year}</li>
                 <button onclick="movieSelected('${film.imdbID}')" class="btn btn-details btn-primary" type="button" href="#"><i class="fas fa-info-circle fa-xs"></i></button>
             </div>
           `;
+        });
+        let listItem = document.querySelector("#movies");
+        listItem.innerHTML = output;
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      let listItem = document.querySelector('#movies')
-    listItem.innerHTML = output
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   }
 });
 
-function movieSelected(id){
-  sessionStorage.setItem('movieId', id);
-  window.location = 'movie.html';
+function movieSelected(id) {
+  sessionStorage.setItem("movieId", id);
+  window.location = "movie.html";
   return false;
 }
 
-function getFilm(){
-  let movieId = sessionStorage.getItem('movieId');
+function getFilm() {
+  let movieId = sessionStorage.getItem("movieId");
 
-  axios.get('https://www.omdbapi.com?i='+ movieId + "&apikey=ce941a34")
+  axios
+    .get("https://www.omdbapi.com?i=" + movieId + "&apikey=ce941a34")
     .then((response) => {
       console.log(response);
       let film = response.data;
 
-      let output =`
+      let output = `
         <div class="row">
           <div class="col-md-4">
             <img src="${film.Poster}" class="thumbnail">
@@ -89,8 +92,8 @@ function getFilm(){
         </div>
       `;
 
-      let listItem = document.querySelector('#movies')
-    listItem.innerHTML = output
+      let listItem = document.querySelector("#movies");
+      listItem.innerHTML = output;
     })
     .catch((err) => {
       console.log(err);
